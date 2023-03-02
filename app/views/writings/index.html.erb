@@ -1,0 +1,29 @@
+<div class='container'>
+    <p style="color: green"><%= notice %></p>
+    <h1><%=t(:works)%> <%=link_to get_user((params[:user_id])).username, user_url(@user)%></h1>
+
+    <%if (writings = @user.writings).size.zero?%>
+        <p><%=t(:no_works)%></p> 
+        <%else%>
+
+        <% writings.each do |writing| %>
+        <div class='comment'>
+            <p><%= "#{t(:name)}: #{writing.name}" %></p>
+            <p><%(s = writing.rating).times do%>
+                <span class="glyphicon glyphicon-star" style='color:yellow'></span> 
+                <%end%>
+                <%(5-s).times do%>
+                <span class="glyphicon glyphicon-star-empty" style='color:yellow'></span> 
+                <%end%>
+            </p>
+            <p>
+            <%= link_to t(:show_this), user_writing_path(id: writing.id) %>
+            </div>
+        <% end %>
+
+    <%end%>
+        
+    <%if @current_user == @user%>
+        <%=button_to t(:add_work), new_user_writing_url, method: :get, id: 'submit-btn'  %>
+    <%end%>
+</div>

@@ -1,0 +1,124 @@
+
+en:
+  # email_
+  email_empty: 'Empty email'
+  find: ' Find...'
+  user: 'User'
+  choose_file: 'Choose file'
+  new_user: 'User was succesfully create'
+  update_user: 'User was succesfully updated'
+  destroy_user: 'User was succesfully destroyed'
+  new_writing: 'Writing was succesfully create'
+  update_writing: 'Writing was succesfully updated'
+  destroy_writing: 'Writing was succesfully destroyed'
+  choose_age_limit: 'Choose age limit '
+  age_limit: 'Age limit'
+  back: 'Back'
+  edit: 'Edit'
+  followers: 'Followers'
+  welcome: 'Welcome'
+  best_writing: 'Best writing'
+  best_writings: 'Best writings'
+  today_writing: 'Today writings'
+  choose_genre: 'Choose genre'
+  no_age_limit: 'Agem limit must be between 0 and 18'
+  follow_user: 'Follow user'
+  unfollow_user: 'Unfollow user'
+  following_done: 'You are subscribed'
+  invalid_age_limit: 'Invalid age limit'
+
+  back_to_users: 'Back to users'
+  genre: "Genre"
+  email_exist: 'This email is already occupied'
+  greetings: 'You are on the best writing form where you can see and post you writings. Enjoy!'
+  forms:
+    search:
+      title: 'Search'
+      age_limit: 'Age limit'
+      genre: 'Genre'
+      number_of_pages: 'Number of pages'
+      rating_no_more: 'Rating at least...'
+      no_followings: 'No followings, want to follow somebody?'
+      nothing: 'Nothing was found about your request'
+  genres:
+    horror: 'Horror'
+    action: 'Action'
+    none: 'None'
+    fantasy: 'Fantasy'
+    comedy: 'Comedy'
+    drama: 'Drama'
+    mystery: 'Mystery'
+    romance: 'Romance'
+    thriller: 'Thriller'
+    #    [[t('none'), 'none'], [t('horror'), 'horror'], [t('fantasy'), 'fantasy'], [t('action'), 'action'], [t('comedy'), 'comedy'],
+    # [t('drama'), 'drama'], [t('mystery'), 'mystery'], [t('romance'), 'romance'], [t('thriller'), 'thriller']]
+  login_please: 'Login please'
+  your_work: "Your work" 
+  user_exist: "This user is existed"
+  activerecord:
+    attributes:
+      user:
+        username: "Username"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        email: "Email"
+
+  invalid_email: "Invalid email"
+  invalid_login: "Invalid login"
+  invalid_password: "Invalid password"
+  password_confirmation: "Passwords must be qual"
+  forum_name: "Writers Forum"
+  main: "Main"
+  logout: "Logout"
+  login: "Login"
+  profile: "Profile"
+  works: "Works"
+  page_number: 'Page number {%'
+  registration: "Registration"
+  rating: "Rating"
+  your_profile: "Your profile"
+  show_works: "Show works"
+  no_age_limit: 'Age limit must be between 0 and 18'
+  invalid_age_limit: 'Invalid age limit'
+  continue: 'Continue writing'
+  blank_comment: 'Blank comment'
+  create: 'Create'
+  work: "Work"
+  works: "Works"
+  number_of_comments: 'Number of comments'
+  number_of_writings: 'Number of writings'
+
+  comment: "Comment"
+  comments: "Comments"
+  commentators: "commentators"
+  no_comments: "No comments"
+  make_comment: "Make comment"
+  name: "Name"
+  text: "Text"
+  rate: "Rate"
+  prohobit: 'Error'
+  add_work: "Add work"
+  author: "Author"
+  best_work: "Best work"
+  created_at: "Created at"
+  authors: "Authors"
+  search: "Search"
+  show_this: "Show this writing"
+  rating_no_more: "Rating at least.."
+  default: "Nameless work"
+  hello: "Hello world"
+  Nameless_work: "Nameless work"
+  username: "Username"
+  password: "Password"
+  page_number: "Page number %{page_number}"
+  active_record:
+    models:
+      writing:
+        name: 
+          default: "Nameless work"
+
+      user:
+        password: "Adawd"
+    passwrod: "Password"
+
+

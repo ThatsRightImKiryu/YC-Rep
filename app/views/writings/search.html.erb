@@ -1,0 +1,47 @@
+<div class='filters container'> 
+  <%=form_with url: writings_search_url(I18n.locale), id: 'search',method: :post  do |f|%>
+
+  <div style='padding:100px;'>
+    <%=f.text_field :search, placeholder: t('find')%>
+    <%= f.submit id: "submit-btn", class: "btn btn-primary", value: t('search')%>
+      <div class='row' style='margin:20px 200px 20px; left: 50%;'>
+        <div class='col-3'>
+          <%= f.label t(:authors) %>
+          <%= f.radio_button :radio, 'author', checked:true, onchange: 'HideSearch()'%> 
+        </div>
+        <div class='col-3'>
+          <%= f.label t(:works) %>
+          <%= f.radio_button :radio, 'writing', onchange: 'HideSearch()' %>
+        </div>
+        <div class='col-3'><%= f.number_field :rate, placeholder: t('forms.search.rating_no_more'), in: 0..5%></div>
+      </div>
+    <div style='row'>
+    <div id = 'for_users' style='display:none'>
+    <div class='row'>
+    <div class='col-6'><%= f.number_field :number_of_pages, placeholder: t('forms.search.number_of_pages'), in: 0..999%></div>
+      <div class='col-6'><%= f.number_field :age_limit, placeholder: t('forms.search.age_limit'), in: 0..18%></div>
+        <fieldset style='width:50000px'>  
+          <div class='row'>
+            <%(0..(g = translated_genres_for_checkbox).size/ 2).step(2).each do |i|%>
+              <div class='col-1' style='margin-left:150px;'>
+                <div class='row'>
+                  <%=f.label g[i][0]%>
+                  <%=f.check_box g[i][1]%>
+                </div>
+                <div class='row'>
+                  <%=f.label g[i + 1][0]%>
+                  <%=f.check_box g[i + 1][1]%>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </fieldset>  
+      </div>
+    </div>
+  <%end%>
+  </div>
+</div>
+
+  <div id='result'>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class='container search'>
+ <h2><%=t('search')%></h2>
+    <%=form_with url: writings_search_path, method: :post do |f|%>
+  <div class='row' style='border:solid white 1px; height:auto; display:flex;'>
+      <div class='col-10'><%=f.text_field :search_line, placeholder: t('search')%></div>
+      <div class='col-2'><%=f.submit value: t('search') %></div>
+  </div>
+    <%end%>
+  <div style='border:solid white 1px; height:100px;'>
+    <div id='result'></div>
+  </div>
+
+</div>

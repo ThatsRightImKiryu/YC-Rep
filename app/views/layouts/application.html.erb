@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=t(:forum_name)%></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script>
+      function HideComment() {
+        var x = document.getElementById("myDIV");
+
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      function HideSearch() {
+        var x = document.getElementById("for_users");
+
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+
+    </script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+
+  <body>
+     <header>
+      <nav class="navbar navbar-expand-lg navbar-light my-primary">
+        <%=link_to t(:main), root_path , class: "navbar-brand"%> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%=link_to t(:search), writings_search_url, class: 'nav-link', id: 'search'%>
+            </li>
+            
+            <li class="nav-item">
+              <%=signed_in? ? (link_to t(:logout), session_logout_path, class: 'nav-link') : (link_to t(:login), session_login_path, class: 'nav-link') %>
+            </li>
+            <%if (@user = current_user)%>
+                <li class="nav-item"><%=link_to t(:profile), (user_url( id:@user)), class: 'nav-link'%></li>
+                <li class="nav-item"><%=link_to t(:works), user_writings_path(user_id: @user), class: 'nav-link', id: 'writings-link'%></li>
+            <%end%>
+          </ul>
+        </div>
+      </nav>
+     </header>
+
+    <%= yield %>
+
+
+  <footer class="my-primary">
+        <div class="container1">
+        <p class='footer-text'><%= link_to 'English', root_path(locale: :en)%> | <%= link_to 'Русский', root_path(locale: :ru) %>  </p>
+        </div>
+    </footer>
+  </body>
+</html>

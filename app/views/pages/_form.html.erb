@@ -1,0 +1,37 @@
+<div class='container'>
+
+<%= form_for [@user, @writing, @page] do |form| %>
+  <%= hidden_field_tag :page_number, params[:page_number] = (@writing.number_of_pages) %>
+  <% if page.errors.any? %>
+    <div style="color: red">
+    <%=t('prohibited')%>
+
+      <ul>
+        <% page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul> 
+    </div>
+  <% end %>
+
+    <%= form.rich_text_area :text %>
+    
+  <div>
+    <%=link_to t('back'), user_writing_url(@user, @writing), id: 'back-link'%>
+  </div>
+  <div>
+    <%if @writing.number_of_pages-1 != 0%>
+    <%=t('go_to_page')%>
+    <%(@writing.number_of_pages-1).times do |i|%>
+      <%=link_to i+1, user_writing_page_path(@user, @writing,
+      id: @writing.pages.find_by(page_number: i+1).id, page_number: i + 1)%>
+    <%end%>
+    <%end%>
+  </div>
+
+
+  <div>
+    <%= form.submit%>
+  </div>
+<% end %>
+</div>

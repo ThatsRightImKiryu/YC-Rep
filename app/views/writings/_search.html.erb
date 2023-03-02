@@ -1,0 +1,61 @@
+<script src="/sorttable.js"></script>
+
+<div id='result'>
+<%if (params[:radio] == 'writing' && !(sort_writings).blank?) %>
+	<table class='sortable'>
+	<thead>
+	<tr>
+		<th><%=t('author')%></th>
+		<th><%=t('name')%></th>
+		<th><%=t('created_at')%></th>
+		<th><%=t('rating')%></th>
+		<th><%=t('genre')%></th>
+		<th><%=t('age_limit')%></th>
+
+
+
+	</tr>
+	</thead>
+	<tbody>
+		<%@writings&.to_a&.each do |writing| %>
+		<tr>
+			<td><%=link_to "#{(user = User.find(writing.user_id)).username}", user_url(user)%></td>
+			<td><%=link_to "#{writing.name}", user_writing_url(user, writing)%></td>
+			<td><%=(writing.created_at.strftime('%d-%m-%Y'))%></td>
+			<td><%=(writing.rating)%><span class="glyphicon glyphicon-star" style='color:yellow'></span></td>
+			<td><%=t("genres.#{writing.genre}")%></td>
+			<td><%=(writing.age_limit)%>+</td>
+
+
+
+		</tr>
+		<%end%>
+	<%elsif (params[:radio] == 'author' && !(sort_users).blank?)%>
+		<table class='sortable'>
+			<thead>
+			<tr>
+				<th><%=t(:author)%></th>
+				<th><%=t(:best_work)%></th>
+				<th><%=t(:rating)%></th>
+			</tr>
+			</thead>
+
+			<% @authors&.to_a&.each do |user| %>
+				<tr>
+					<td><%=link_to "#{user.username}", user_url( id:user)%></td>
+          			<td><%if (best = user.writings.order("rating DESC").first)&.name.blank? %>
+                  		<%='Нет таких'%>
+                	<%else %>
+     					<%=link_to best.name, user_writing_path(user_id: best.user_id, id: best.id)%> 
+              			<%end%>
+          			</td>
+					<td><%=(user.rating)%><span class="glyphicon glyphicon-star" style='color:yellow'></span></td>
+				</tr>
+			<%end%>
+	</tbody>
+
+</table>
+<%else%>
+	<p><%=t('forms.search.nothing')%></p>
+<%end%>
+</div>

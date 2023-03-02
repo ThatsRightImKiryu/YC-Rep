@@ -1,0 +1,45 @@
+<script src="/preview.js"></script>
+
+<%= form_for [get_user(params[:user_id]), @writing] do |form| %>
+  <% if @writing.errors.any? %>
+    <div class='errors'>
+       <h2><%=t(:prohibit)%>:</h2>
+
+      <ul>
+        <% @writing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div>
+    <%= form.text_field :name, placeholder: t('name'), id: 'writing_name' %>
+  </div>
+  <div class='imag'>
+    <%= image_tag(@writing.cover_thumbnail) %>
+
+  <div class="upload-preview" >
+    <%# <img style='width:100px;height:100px' /> %>
+    <%= image_tag '', class:'upload-review'%>    
+  </div>
+  </div>
+  <div class='display:block imag'>
+    <%= form.file_field :cover, class:'file'%>
+  </div>
+
+  <div>
+    <%= form.select :genre, translated_genres_for_checkbox,  placeholder: t('genre') %>
+    <label><%=t ('choose_genre')%></label>
+  </div>
+  <div>
+    <%= form.number_field :age_limit, in: 0..18, placeholder: t('age_limit') %>
+    <label><%=t('choose_age_limit')%></label>
+  </div>
+
+  <div>
+    <%= form.submit id: 'submit-btn'%>
+  </div>
+<% end %>

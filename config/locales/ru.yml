@@ -1,0 +1,117 @@
+
+ru:
+  find: 'Найти...'
+  genre: "Жанр"
+  new_user: 'Пользователь успешно создан'
+  update_user: 'Пользователь успешно обновлен'
+  destroy_user: 'Пользователь успешно удален'
+  new_writing: 'Произведение успешно создано'
+  update_writing: 'Произведение успешно обновлено'
+  destroy_writing: 'Произведение успешно удалено'
+  email_empty: 'Пустой email'
+  invalid_email: 'Неправильный email'
+  choose_file: 'Выбрать файл'
+  choose_genre: 'Выбрать жанр'
+  choose_age_limit: 'Выбрать возрастное ограничение '
+  age_limit: 'Возастной рейтинг'
+  back: 'Назад'
+  edit: 'Изменить'
+  invalid_password: 'Неправильный пароль'
+  invalid_login: 'Неправильный логин'
+  followers: 'Подписчики'
+  welcome: 'Добро пожаловать!'
+  best_writing: 'Лучшее произведение'
+  best_writings: 'Лучшие произведения'
+  today_writing: 'Сегодняшние произведение'
+  email_exist: 'Данный email уже существует'
+  user_exist: "Пользователь с данным логином уже существует"
+  no_works: 'На данный момент произведений нет'
+  
+  genres:
+      horror: 'Хоррор'
+      action_genre: 'Экшн'
+      none: 'Не выбран'
+      fantasy: 'Фэнтези'
+      comedy: 'Комедия'
+      drama: 'Драма'
+      mystery: 'Мистика'
+      romance: 'Роман'
+      thriller: 'Триллер'
+  page_number: "Страница %{page_number}"
+  greetings: "Вы на лучшем форуме писателей, где можно просматривать разного рода литературные произведения, а также создавать свои. Прошу, наслаждайтесь!"
+  forms:
+    search:
+      title: 'Поиск'
+      age_limit: 'Возрастной рейтинг'
+      genre: 'Жанр'
+      number_of_pages: 'Количество страниц'
+      rating_no_more: 'Рейтинг не менее...'
+      no_followings: 'Подписок не найдено, хотите подписаться?'
+      nothing: 'По вашему завпросу ничего не найдено'
+
+  forum_name: 'Форум писателей'
+  main: 'Главная'
+  logout: 'Выйти'
+  login: 'Войти'
+  profile: 'Профиль'
+  works: 'Произведения'
+  registration: 'Регистрация'
+  rating: 'Рейтинг'
+  your_profile: 'Ваш профиль'
+  show_works: 'Показать произведения'
+  work: 'Произведение'
+  comment: 'Комментарий'
+  comments: 'Комментарии'
+  commentators: 'Комментаторы'
+  no_comments: 'Комментариев нет'
+  make_comment: 'Оставить комментарий'
+  name: 'Название'
+  text: 'Текст'
+  rate: 'Оценка'
+  page_number: "Страница номер %{page_number}"
+
+  add_work: 'Добавить произведение'
+  author: 'Автор'
+  best_work: 'Лучшее произведение'
+  created_at: 'Создан'
+  authors: 'Авторы'
+  search: 'Поиск'
+  show_this: 'Показать данное произведение'
+  rating_no_more: 'Рейтинг не менее..'
+  Nameless_work: 'Безымянное произведение'
+  back_to_users: 'Назад к пользователям'
+  no_age_limit: 'Возрастной рейтинг должен быть между 0 и 18'
+  invalid_age_limit: 'Неправильно введено возрастное ограничение'
+  continue: 'Продолжить произведение'
+  blank_comment: 'Пустой комментарий'
+  create: 'Создать'
+  destroy: 'Удалить'
+  go_to_page: 'Перейти'
+  commentator: 'Комментатор'
+  number_of_comments: 'Кол-во комментариев'
+  no_followers: 'Подписчиков нет'
+  no_rated_writings: 'Нет оцененных произведений'
+  follow_user: 'Подписаться'
+  unfollow_user: 'Отписаться'
+  following_done: 'Вы подписались'
+  number_of_writings: 'Кол-во произведений'
+  prohibit: 'Ошибка'
+  user: 'Пользователь'
+  page_create: 'Страница написана'
+  page_update: 'Страница обновлена'
+  activerecord:
+    models:
+      page: 'страницу'
+      user: 'пользователя'
+      writing: 'произведение'
+    attributes:
+      user:
+        username: "Имя пользователя"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        email: "Email"
+
+  new: 'Создать'
+  password: 'Пароль'
+  password: 'Пароль'
+

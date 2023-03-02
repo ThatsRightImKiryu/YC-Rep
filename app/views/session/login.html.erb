@@ -1,0 +1,17 @@
+<%unless flash[:notice].blank?%>
+  <h2 style = 'color:red'><%=flash[:notice]%></h2>
+<%end%>
+<div class='login'>
+<%=form_with url: session_create_url, method: :post do |f|%>
+	<div>
+		<label><%=t('activerecord.attributes.user.username')%></label>
+		<%=f.text_field :username, require: true %>
+
+		<label><%=t('activerecord.attributes.user.password')%></label>
+		<%=f.password_field  :password, class:'inpt',require: true%>
+
+		<%=f.submit id: 'submit-btn', value: t(:login), class: 'btn btn-primary btn-block btn-large'%>
+		<%=link_to t(:registration), new_user_path%>
+	</div>
+<%end%>
+</div>

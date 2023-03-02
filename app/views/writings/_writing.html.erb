@@ -1,0 +1,25 @@
+<div id="<%= dom_id writing %>">
+<%get_user(writing.user_id)%>
+  <p>
+    <strong><%=t(:name)%>:</strong>
+    <%= link_to writing.name, user_writing_url(@user, writing) %>
+  </p>
+  <p>
+        <strong><%=t('activerecord.attributes.user.username')%>:</strong>
+    <%= link_to @user.username, user_url(@user) %>
+
+  </p>
+    <p>
+        <strong><%=t(:rating)%>:</strong>
+      <%(s = writing.rating).times do%>
+      <span class="glyphicon glyphicon-star" style='color:yellow'></span> 
+    <%end%>
+    <%(5-s).times do%>
+      <span class="glyphicon glyphicon-star-empty" style='color:yellow'></span> 
+    <%end%>
+
+
+  </p>
+
+
+</div>

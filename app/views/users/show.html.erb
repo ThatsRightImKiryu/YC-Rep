@@ -1,0 +1,56 @@
+<div class="container mt-5 main">
+    <div class="px-4 mt-1">
+    <p style="color: green"><%= notice %></p>
+    <%if @current_user.id == params[:id].to_i%>
+      <h2 class="mt-2 mb-0"><%= "#{t('activerecord.attributes.user.username')}, #{@user.username}"%> </h2>
+    <%else%>
+      <h2 class="mt-2 mb-0"><%= "#{t('profile')} #{@user.username}"%> </h2>
+      <%if follower?%>
+        <%=link_to  t('unfollow_user'), user_follower_path(@user), data: {turbo_method: :delete}%>
+      <%else%>
+        <%=link_to t('follow_user'), new_user_follower_path(user_id: @current_user, id: @user )%>
+      <%end%>
+    <%end%>
+    <div>
+      <%= image_tag(@user.avatar_thumbnail, class:"rounded-circle") %>
+    </div>
+    <p><%=t(:rating)%>:
+      <%(s = @user.rating).times do%>
+        <span class="glyphicon glyphicon-star" style='color:yellow'></span> 
+      <%end%>
+      <%(5-s).times do%>
+        <span class="glyphicon glyphicon-star-empty" style='color:yellow'></span> 
+      <%end%></p>
+      <br/>
+        <%if admin? || @current_user == @user%>
+        <%= link_to(t('back'),users_path,  id: 'all_users') if admin? %><br/>
+        <%= link_to t('edit'), "/users/#{@user.id}/edit", id: 'edit-link'%><br/>
+        <%= button_to t('destroy'), @user, method: :delete, id: 'submit-btn' if @user.role != 'admin'%> 
+      <%end%>
+      <%= link_to t(:show_works), user_writings_url(user_id: @user)  %><br/>
+
+    </div>
+
+
+     <div class="px-4 mt-1">
+      <h4><%=t 'best_writing'%></h4>
+      <%best = best_writings(@user)%>
+      <%unless best.blank?%>
+        <p><%=render best.take(1)%></p>
+      <%else%>
+        <p><%=t('no_rated_writings')%></p>
+      <%end%>
+    </div>
+     <div class="px-4 mt-1">
+      <h4><%=t 'followers'%></h4>
+      <%get_followers = followers%>
+      <%unless get_followers.blank?%>
+        <ul><%get_followers.each do |user|%>
+          <li><%=render user%></li>
+        <%end%></ul>
+      <%else%>
+        <p><%=t('no_followers')%></p>
+      <%end%>
+    </div>
+
+</div>

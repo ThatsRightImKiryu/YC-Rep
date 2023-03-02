@@ -1,0 +1,46 @@
+  <div class="container ">
+
+  <div><h1><%=t('welcome')%></h1></div>
+<div><h3><%=t('greetings')%></h3></div>
+    <br/>
+    <div class="px-4 mt-1 row">
+      <div class="px-4 mt-1 col-3">
+        <h4><%=t 'best_writings'%></h4>
+        <%best = best_writings%>
+        <%unless best.blank?%>
+          <%best_writings.each do |writing|%>
+            <p><%=render writing%></p>
+          <%end%>
+        <%else%>
+          <p><%=t('no_rated_writings')%></p>
+        <%end%>
+
+      </div>
+      <div class="px-4 mt-1 col-3">
+        <%today = today_writings%>
+        <%unless today.blank?%>
+          <%today = today_writings%>
+          <h4><%=t('today_writing')%></h4>
+          <%today_writings.each do |writing|%>
+            <p><%=render writing%></p>
+          <%end%>
+        <%else%>
+          <p><%=t('no_today_writings')%></p>
+        <%end%>
+
+      </div>
+
+      <div class="px-4 mt-1 col-3">
+      <%followers = followers_writings if signed_in?%>
+      <%unless followers.blank?%>
+        <h4><%=t('followers_writing')%></h4>
+        <%followers_writings.each do |writing|%>
+          <p><%=render writing%></p>
+        <%end%>
+        <%else%>
+          <p><%=t('forms.search.no_followings')%> <%=link_to t('forms.search.title'), writings_search_url%></p>
+
+      <%end%>
+      </div>
+    </div>
+  </div>

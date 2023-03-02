@@ -1,0 +1,11 @@
+<div class='container'>
+  <h1><%=t(:edit)%></h1>
+
+  <%= render "form", writing: @writing, user: User.find(params[:user_id]) %>
+
+  <br>
+
+  <div>
+    <%= link_to t(:back), user_writings_url(user_id:@current_user.id) %>
+  </div>
+</div>

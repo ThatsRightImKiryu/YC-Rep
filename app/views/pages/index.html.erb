@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pages</h1>
+
+<div id="pages">
+  <% @writing.pages.each do |page| %>
+    <%= render page %>
+    <p>
+      <%= link_to "Show this page", user_writing_page_url(@user,@writing,page) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New page", new_user_writing_page_url %>

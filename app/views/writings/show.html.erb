@@ -1,0 +1,49 @@
+<div class='container show_writing'>
+<div id='result'>
+  <%get_user(params[:user_id])%>
+  </div><p style="color: green"><%= notice %></p>
+  <h3 id = 'work'><%="#{t(:work)}: #{get_writing(@user.id, params[:id]).name}" %></h3>
+    <div style='margin-left: auto;
+    margin-right: auto;width: 100%;'><%= image_tag(@writing.cover_thumbnail, style:'margin-left:120px;') %></div>
+    <div>
+    <%(s = @writing.rating).times do%>
+      <span class="glyphicon glyphicon-star" style='color:yellow'></span> 
+    <%end%>
+    <%(5-s).times do%>
+      <span class="glyphicon glyphicon-star-empty" style='color:yellow'></span> 
+    <%end%>
+    </div>
+    <input value=<%=t(:comments)%> type='submit' onclick='HideComment()'>
+    <div id='myDIV'>
+      <div><%= link_to t(:show_works), user_writings_url(user_id:User.find(@writing.user_id)) %></div>
+      <div><%if @current_user.id == @writing.user_id%>
+        <%= link_to t('edit'), edit_user_writing_url(@user, @writing), id: 'edit-link' %>
+        <%= link_to t('continue'), new_user_writing_page_url(@user, @writing) %><br/>
+        <%= button_to t('destroy'), user_writing_path(@user, @writing),
+            class: "btn btn-primary btn-block btn-large", method: :delete %>
+      <%else%>
+          <%= form_with url: new_user_writing_rating_path(@user, @writing), method: :get do |f|%>
+          <div class='colmun'>
+          <%=f.number_field :rate, placeholder: t(:rate), in: 0..5, require: true%><br/>
+          <%=f.text_area :comment, placeholder: t(:comment)%>
+          <%=f.submit value: t(:make_comment), id: 'submit-btn'%>
+          </div>
+        <%end%>
+      <%end%>
+        <%if (rates = @writing.ratings).blank?%>
+        <p><%=t(:no_comments)%></p>
+        <%else%>
+          <%rates.to_a.each do |r|%>
+            <div class='comment'>
+              <p class='commentator'><%=t(:commentator)%>:<%=r.commentator%></p>
+              <p><%=t(:rate)%>:<%=r.rate%></p>
+              <p><%=t(:comment)%>: <%=r.comment.blank? ? t('blank_comment') : r.comment%></p>
+            </div>
+            <%=button_to t('destroy'),user_writing_rating_path(id: r.id, writing_id: @writing),
+            class: "btn btn-primary btn-block btn-large", method: :delete if  admin? || @writing.user_id == @current_user.id || Rating.find(r.id)&.commentator == @current_user.username%>
+          <%end%>
+        <%end%></div>
+      </div>
+
+</div>
+</div>
